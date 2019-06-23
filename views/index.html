@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>空气质量可视化</title>
+		<!-- header&nav -->
+		<link rel="stylesheet" href="stylesheets/reset.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+		<link rel="stylesheet" href="stylesheets/head.css" />
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+		<script src="javascripts/swiper.min.js"></script>
+		<!-- map -->
+		<link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
+		<!-- 左下角滑块的样式 -->
+		<link rel="stylesheet" href="https://js.arcgis.com/4.11/dijit/themes/claro/claro.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/map.css" />
+		<script src="https://js.arcgis.com/4.11/"></script>
+		<!-- echarts引用 -->
+		<script type="text/javascript" src="javascripts/echarts-all.js"></script>
+		<!-- 左下角滑块的样式 -->
+		<style>
+			#containerDiv {
+				background-color: white;
+				padding: 3px;
+				text-align: center;
+			}
+		
+			#title {
+				font-size: 14pt;
+			}
+		</style>
+	</head>
+
+	<body class="claro">
+		<!-- /* 导航 */ -->
+		<header class="header">
+			<div class="container clearfix">
+				<div class="fl left">
+					<a href="javascript:void(0)"><span>全国空气质量信息可视化</span></a>
+				</div>
+				<div class="fr nav">
+					<ul class="navbar_nav" data-in="fadeInDown" data-out="fadeOutUp">
+						<li><input type="text" id="birthday" value="2017-6-16" /></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<!-- 地图框 -->
+		<div id="mapDiv"></div>
+
+		<!-- 标题 -->
+		<div id="titleDiv" class="esri-widget">
+			<div id="titleText">请选择想要查看的时间</div>
+			<select id="date">
+				<option value="2017-01-04">2017-01-04</option>
+				<option value="2017-06-16">2017-06-16</option>
+				<option value="2017-08-16">2017-08-16</option>
+				<option value="2019-03-11">2019-03-11</option>
+				<option value="2019-04-20">2019-04-20</option>
+				<option value="2019-04-23">2019-04-23</option>
+				<option value="2019-04-26">2019-04-26</option>
+				<option value="2019-04-27">2019-04-27</option>
+				<option value="2019-04-28">2019-04-28</option>
+				<option value="2019-04-29">2019-04-29</option>
+				<option value="2019-04-30">2019-04-30</option>
+				<option value="2019-05-01">2019-05-01</option>
+				<option value="2019-05-02">2019-05-02</option>
+				<option value="2019-05-03">2019-05-03</option>
+				<option value="2019-05-04">2019-05-04</option>
+				<option value="2019-05-05">2019-05-05</option>
+				<option value="2019-05-06">2019-05-06</option>
+				<option value="2019-05-07">2019-05-07</option>
+				<option value="2019-05-08">2019-05-08</option>
+				<option value="2019-05-09">2019-05-09</option>
+				<option value="2019-05-10">2019-05-10</option>
+				<option value="2019-05-11">2019-05-11</option>
+				<option value="2019-05-12">2019-05-12</option>
+				<option value="2019-05-13">2019-05-13</option>
+				<option value="2019-05-14">2019-05-14</option>
+				<option value="2019-05-15">2019-05-15</option>
+				<option value="2019-05-16">2019-05-16</option>
+				<option value="2019-05-17">2019-05-17</option>
+				<option value="2019-05-18">2019-05-18</option>
+				<option value="2019-05-19">2019-05-19</option>
+				<option value="2019-05-20">2019-05-20</option>
+				<option value="2019-05-21">2019-05-21</option>
+				<option value="2019-05-22">2019-05-22</option>
+				<option value="2019-05-23">2019-05-23</option>
+				<option value="2019-05-24">2019-05-24</option>
+				<option value="2019-05-25">2019-05-25</option>
+				<option value="2019-05-26">2019-05-26</option>
+				<option value="2019-05-27">2019-05-27</option>
+				<option value="2019-05-28">2019-05-28</option>
+				<option value="2019-05-29">2019-05-29</option>
+				<option value="2019-05-31">2019-05-31</option>
+				<option value="2019-06-01">2019-06-01</option>
+				<option value="2019-06-02">2019-06-02</option>
+				<option value="2019-06-03">2019-06-03</option>
+				<option value="2019-06-04">2019-06-04</option>
+				<option value="2019-06-05">2019-06-05</option>
+				<option value="2019-06-06">2019-06-06</option>
+				<option value="2019-06-07">2019-06-07</option>
+				<option value="2019-06-08">2019-06-08</option>
+				<option value="2019-06-09">2019-06-09</option>
+				<option value="2019-06-10">2019-06-10</option>
+				<option value="2019-06-11">2019-06-11</option>
+			</select>
+			<a id="submit">提交</a>
+		</div>
+
+		<!-- 左下角的滑块和直方图 -->
+		<div id="containerDiv">
+			<span id="title">AQI</span>
+			<div id="slider"></div>
+		</div>
+		
+		<!-- 表格的模态框-->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width: 900px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							天气质量详细信息
+						</h4>
+					</div>
+					<!-- <div class="modal-body" id="main"> -->
+					<div style="width: 900px;height: 450px;" id="main">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="javascripts/map.js"></script>
+		<script>
+			var myChart = echarts.init(document.getElementById('main'));
+		</script>
+
+	</body>
+
+
+</html>

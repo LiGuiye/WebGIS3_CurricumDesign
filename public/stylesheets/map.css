@@ -1,0 +1,15 @@
+#mapDiv {
+	padding-top: 50px;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+/* 标题框 */
+#titleDiv {
+	padding: 10px;
+	font-size: 10pt;
+	font-weight: 60;
+	font-family: Fangsong;
+	text-align: center;
+}
